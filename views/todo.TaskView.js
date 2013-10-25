@@ -4,7 +4,9 @@ todo.TaskView = Backbone.View.extend({
 
   events: {
     'dblclick': 'toggleEditView',
-    'submit form': 'changeDescription'
+    'submit form': 'changeDescription',
+    'click button.cancel': 'render',
+    'click button.remove': 'triggerRemove'
   },
 
   initialize: function() {
@@ -14,12 +16,17 @@ todo.TaskView = Backbone.View.extend({
   },
 
   render: function() {
+    this.$el.empty();
     this.$el.text(this.model.get('description'));
     return this.$el;
   },
 
-  changeDescription: function(e) {
-    e.preventDefault();
+  triggerRemove: function() {
+    this.model.trigger('removeMe', this.model);
+  },
+
+  changeDescription: function(evt) {
+    evt.preventDefault();
     var description = this.$('input').val();
     this.model.set('description', description);
   },
@@ -30,6 +37,8 @@ todo.TaskView = Backbone.View.extend({
       var $input = $('<input type="text"/>').val(this.model.get('description'));
       var $form = $('<form/>').append($input);
       this.$el.html($form);
+      this.$el.append('<button class="cancel">Cancel</button>');
+      this.$el.append('<button class="remove">Delete Task</button>');
     }
   }
 });
