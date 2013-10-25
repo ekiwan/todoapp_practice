@@ -1,5 +1,6 @@
 todo.TasksView = Backbone.View.extend({
   className: 'tasks',
+  tagName: 'ul',
 
   initialize: function() {
     this.addTaskView = new todo.AddTaskView();
