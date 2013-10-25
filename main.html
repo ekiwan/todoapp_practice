@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'></script>
+  <script src='lib/backbone.js'></script>
+
+  <script src='todo.js'></script>
+  <script src='models/todo.Task.js'></script>
+  <script src='collections/todo.Tasks.js'></script>
+  <script src='views/todo.TaskView.js'></script>
+  <script src='views/todo.TasksView.js'></script>
+  <script src='todo.App.js'></script>
+  <script>
+    $(document).ready(function(){
+      todo.init();
+    });
+  </script>
+</head>
+<body>
+  <div id='view'></div>
+</body>
+</html>
