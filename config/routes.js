@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   var task = require('../controllers/task.js');
   app.get('/tasks', task.list);
-  app.post('tasks', task.create);
+  app.post('/tasks', task.create);
   app.get('/tasks/:id', task.get);
   app.put('/tasks/:id', task.change);
   app['delete']('/tasks/:id', task['delete']);

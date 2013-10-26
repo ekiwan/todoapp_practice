@@ -26,6 +26,6 @@ todo.TasksView = Backbone.View.extend({
   },
 
   removeTask: function(task) {
-    this.collection.remove(task);
+    task.destroy();
   }
 });

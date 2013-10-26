@@ -31,12 +31,14 @@ todo.TaskView = Backbone.View.extend({
   changeStatus: function(evt) {
     var next = !this.model.get('complete');
     this.model.set('complete', next);
+    this.model.save();
   },
 
   changeDescription: function(evt) {
     evt.preventDefault();
     var description = this.$('input').val();
     this.model.set('description', description);
+    this.model.save();
   },
 
   toggleEditView: function() {

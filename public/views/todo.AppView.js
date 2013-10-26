@@ -9,7 +9,7 @@ todo.AppView = Backbone.View.extend({
   },
 
   addTask: function(task) {
-    this.model.tasks.add(task);
+    this.model.tasks.create(task);
   },
 
   render: function() {
