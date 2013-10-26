@@ -1,4 +1,9 @@
-.task {
+body {
+  background-color: black;
+  color: cyan;
+}
+
+.task, .addTask {
   font-family: sans-serif;
   font-size: 28px;
 }

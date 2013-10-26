@@ -3,26 +3,34 @@ todo.TaskView = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    'dblclick': 'toggleEditView',
+    'dblclick .description': 'toggleEditView',
     'submit form': 'changeDescription',
     'click button.cancel': 'render',
-    'click button.remove': 'triggerRemove'
+    'click button.remove': 'triggerRemove',
+    'change input.status': 'changeStatus'
   },
 
   initialize: function() {
     this.edit = false;
-    this.listenTo(this.model, 'change', this.render.bind(this));
+    this.listenTo(this.model, 'change:description', this.render.bind(this));
     this.render();
   },
 
   render: function() {
     this.$el.empty();
-    this.$el.text(this.model.get('description'));
+    var $desc = $('<span class="description"/>').text(this.model.get('description'));
+    this.$el.append($desc);
+    this.$el.append('<input class="status" type="checkbox"/>');
     return this.$el;
   },
 
   triggerRemove: function() {
     this.model.trigger('removeMe', this.model);
+  },
+
+  changeStatus: function(evt) {
+    var next = !this.model.get('complete');
+    this.model.set('complete', next);
   },
 
   changeDescription: function(evt) {

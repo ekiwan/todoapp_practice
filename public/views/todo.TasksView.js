@@ -3,11 +3,11 @@ todo.TasksView = Backbone.View.extend({
   tagName: 'ul',
 
   initialize: function() {
-    this.addTaskView = new todo.AddTaskView();
     _.bindAll(this, 'render', 'addTask', 'removeTask');
     this.listenTo(this.collection, 'removeMe', this.removeTask);
     this.listenTo(this.collection, 'remove', this.render);
     this.listenTo(this.collection, 'add', this.addTask);
+    this.listenTo(this.collection, 'reset', this.render);
     this.render();
   },
 
